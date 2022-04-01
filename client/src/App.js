@@ -1,9 +1,24 @@
+import { useQuery } from '@apollo/client';
+
+import { FETCH_TODOS } from './graphql/queries/fetchTodos';
+
 function App() {
-  return (
+
+  const {data, loading, error} = useQuery(FETCH_TODOS);
+
+
+  if (error) {
+    return <h1>{error}</h1>;
+  }
+
+  return loading ?
+    <h1>Loading......</h1>
+    :
     <div>
-      <h1>Hello World</h1>
+      {
+        data?.todos?.map(todo => <h1>{todo.task}</h1>)
+      }
     </div>
-  );
 }
 
 export default App;
