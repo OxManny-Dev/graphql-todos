@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Routes, Route } from 'react-router-dom';
 import { Login } from './Login';
 import { FETCH_TODOS } from './graphql/queries/fetchTodos';
+import { Users } from './Users';
 
 function App() {
 
@@ -25,6 +26,11 @@ function App() {
           path='/success'
           element={<h1>WAGMI</h1>}
         />
+        <Route
+          path='/users'
+          element={<Users/>}
+        />
+
       </Routes>
     </div>
 }
