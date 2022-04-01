@@ -11,7 +11,7 @@ export const Login = () => {
 	return (
 		<Form
 			onSubmit={async (values) => {
-				console.log(values);
+
 				await createUserMutation({
 					variables: {
 						...values,

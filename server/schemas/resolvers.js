@@ -1,4 +1,5 @@
-const { Todo, User } = require('../models');
+const {Todo, User} = require('../models');
+const utils = require('../utils');
 
 const resolvers = {
 	Query: {
@@ -16,13 +17,19 @@ const resolvers = {
 		}
 	},
 	Mutation: {
+		// Sign up
 		createUser: async (_root, {firstName, lastName, email, password}) => {
-			return await User.create({
+			console.log('im hit!!!');
+			const user = await User.create({
 				firstName,
 				lastName,
 				email,
 				password,
 			});
+
+			const token = utils.signToken(user.firstName, user._id);
+			console.log(token);
+			return {token, user};
 		},
 		createTodo: async (_root, {task, userId, completed}) => {
 			return await Todo.create({

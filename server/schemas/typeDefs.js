@@ -13,6 +13,11 @@ const typeDefs = gql`
         todos: [Todo]
     }
 
+    type Auth {
+        token: String
+        user: User
+    }
+
     type Todo {
         _id: ID
         task: String
@@ -29,7 +34,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        createUser(firstName: String!, lastName: String!, email: String!, password: String!): User
+        createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         createTodo(task: String!, userId: String!, completed: Boolean): Todo
     }
 `;
