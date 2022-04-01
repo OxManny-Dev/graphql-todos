@@ -16,14 +16,15 @@ const resolvers = {
 		}
 	},
 	Mutation: {
-		createUser: async (_root, { firstName, lastName, password }) => {
+		createUser: async (_root, {firstName, lastName, email, password}) => {
 			return await User.create({
 				firstName,
 				lastName,
-				password
+				email,
+				password,
 			});
 		},
-		createTodo: async (_root, { task, userId, completed }) => {
+		createTodo: async (_root, {task, userId, completed}) => {
 			return await Todo.create({
 				task,
 				userId,
